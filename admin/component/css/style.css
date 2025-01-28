@@ -1,0 +1,28 @@
+
+.nav{
+    margin-right: 30px;
+}
+.navbarr{
+    background-color: #fff;
+    display: flex;
+    height:65px;
+    justify-content: flex-start;
+    box-shadow: 30px -33px 60px #000000;
+}
+.navbarlogo{
+    padding-top:15px;
+    margin-left: 30px;
+     font-family: 'Segoe Print';
+     font-size:20px;
+}
+.iconmenu{
+    width: 50px;
+    height: 50px;
+   margin-left: 80px;
+}
+.buttonmenuicon{
+    width: 60px;
+    border: none;
+    background: none;
+    margin-left: 50px;
+}
