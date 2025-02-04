@@ -65,7 +65,7 @@ $hh= $placelist->dataedit();
         </div>
         </div>';
       }};   
-    ?>
+?>
     <div class="container-fluied">
         <div class="row w-100">
             <?php
@@ -86,9 +86,9 @@ $hh= $placelist->dataedit();
                     </thead>
                 <tbody>
             <?php
-foreach ($dd as $loop) {
-    echo
-    '<tr>
+    foreach ($dd as $loop){
+   echo
+   '<tr>
     <td>' . $loop["id"] . '</td>
     <td>' . $loop["placename"] . '</td>              
     <td>

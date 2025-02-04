@@ -14,7 +14,7 @@
     include("header.php")
     ?>
      <div class="container box ">
-        <div class="row  w-100 h-50 bgcolor">
+        <div class="row  w-100 h-50 bgcolor">          
             <div class="col col-xl-2">
                 <input type="text" class="input" placeholder="From" />
             </div>
@@ -28,7 +28,7 @@
                 <label class="return">Return (Optional)</label>
                 <input type="date" class="inputs" placeholder="Date/Time" />
             </div>
-
+                       
             <div class="col col-xl-2">
                 <button type="button" class="button">Search Buses</button>
             </div>

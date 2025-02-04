@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +10,7 @@
 
     <title>Document</title>
 </head>
+
 <body>
     <?php
     include("header.php")
@@ -24,6 +26,7 @@
         </div>
         <div class="bsb-hero-5 bsb-overlay " style="background-image: url('asset/banner\ background.png'); height:250px;"></div>
     </div>
+  
     <div class="container box ">
         <div class="row  w-100 h-75 bgcolor">
             <div class="col col-xl-2">
@@ -40,10 +43,10 @@
                 <input type="date" class="inputs" placeholder="Date/Time" />
             </div>
 
-            <div class="col col-xl-2">
-                <button type="button" class="button">Search Buses</button>
-            </div>
-        </div>
+    <div class="col col-xl-2">
+    <a href="../php project/searchbus.php" ><button type="button" class="button">Search Buses</button></a>
+    </div>
+    </div>
     </div>
     <div class="container">
         <div class="row bodybox">

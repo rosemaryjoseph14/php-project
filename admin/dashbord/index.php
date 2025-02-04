@@ -4,9 +4,9 @@ require("query.php");
 if (!isset($_SESSION['login'])) {
     header("Location: admin/login.php");
 }
-$mk=$detailsbus->busnames();
-$rr=$placelist->placename();
-$sd=$category->categoryname();
+$mk = $detailsbus->busnames();
+$rr = $placelist->placename();
+$sd = $category->categoryname();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,11 +49,11 @@ $sd=$category->categoryname();
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
                                                         <?php
-                                                        foreach($mk as $loop){
+                                                        foreach ($mk as $loop) {
                                                             echo '
                                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                             Total Number of Buses</div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800"> '.$loop['count'].' </div>';
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800"> ' . $loop['count'] . ' </div>';
                                                         }
                                                         ?>
                                                     </div>
@@ -68,12 +68,12 @@ $sd=$category->categoryname();
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
                                                         <?php
-                                                        foreach($rr as $loop){
-                                                        echo '
+                                                        foreach ($rr as $loop) {
+                                                            echo '
                                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1 pl-3">
                                                             placelist
                                                         </div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800 pl-3">'.$loop['count'].'</div>';
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800 pl-3">' . $loop['count'] . '</div>';
                                                         }
                                                         ?>
                                                     </div>
@@ -111,12 +111,12 @@ $sd=$category->categoryname();
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
                                                         <?php
-                                                        foreach($sd as $loop){
-                                                            echo'
+                                                        foreach ($sd as $loop) {
+                                                            echo '
                                                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1 pl-3">
                                                             Categorys</div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800 pl-3">'.$loop['count'].'</div>';
-                                                    }
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800 pl-3">' . $loop['count'] . '</div>';
+                                                        }
                                                         ?>
                                                     </div>
                                                 </div>
@@ -138,9 +138,7 @@ $sd=$category->categoryname();
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <div class="chart-area">
-                                                    <canvas id="myAreaChart"></canvas>
-                                                </div>
+                                                <div class="chart-area"></div>
                                             </div>
                                         </div>
                                     </div>

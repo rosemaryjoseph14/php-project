@@ -11,11 +11,11 @@
 <nav class="navbar">
 <div class="navbarlogo">BookMyBus</div>
 <div class="nav">
-<ul>
-    <li>Help</li>
-    <li>About</li>
-    <li>Contact</li>
-</ul>
+    <div class="btnnav">
+ <button class="navbutton">Help</button>
+ <button class="navbutton">About</button>
+ <button class="navbutton">Contact</button>
+    </div>
  </div>
 </nav>
     
