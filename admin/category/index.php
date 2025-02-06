@@ -1,7 +1,7 @@
 <?php
 require("query.php");
 $dd = $category->datacategory();
-$hh= $category->dataedit();
+$hh = $category->dataedit();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,3 +1,9 @@
+<?php
+require("query.php");
+
+$detailsplace = $detailsbus->dataplace();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,29 +14,39 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Document</title>
 </head>
-
 <body>
     <?php
     include("header.php")
     ?>
-     <div class="container box ">
-        <div class="row  w-100 h-50 bgcolor">          
-            <div class="col col-xl-2">
-                <input type="text" class="input" placeholder="From" />
-            </div>
-            <div class="col col-xl-2">
-                <input type="text" class="input" placeholder="To" />
-            </div>
-            <div class="col col-xl-2">
+   <div class="container box ">
+        <div class="row  w-100 h-75 bgcolor">
+        <select class="form-select w-25 h-50 mt-4 me-3" aria-label="Default select example" name="placefrom" require>
+            <option selected>select place</option>
+            <?php
+            foreach ($detailsplace as $loop) {
+                echo '
+            <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
+                    }
+            ?>
+        </select>
+        <select class="form-select w-25 h-50 mt-4" aria-label="Default select example" name="placeto" require>
+                    <option selected>select place</option>
+                    <?php
+                    foreach ($detailsplace as $loop) {
+                        echo '
+                    <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
+                    }
+                    ?>
+                </select>
+            <div class="col">
                 <input type="date" class="input" placeholder="Date/Time" />
             </div>
-            <div class="col col-xl-2">
+            <div class="col">
                 <label class="return">Return (Optional)</label>
                 <input type="date" class="inputs" placeholder="Date/Time" />
             </div>
-                       
-            <div class="col col-xl-2">
-                <button type="button" class="button">Search Buses</button>
+            <div class="col">
+                <a href="../php project/searchbus.php"><button type="button" class="button">Update</button></a>
             </div>
         </div>
     </div>
@@ -72,5 +88,4 @@
         </div>
     </div>
 </body>
-
 </html>

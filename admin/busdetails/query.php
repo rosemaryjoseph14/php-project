@@ -140,6 +140,7 @@ class Detailsbus extends DBconn
       header("location:index.php");
     }
   }
+
 };
 
 $detailsbus = new Detailsbus();
@@ -150,3 +151,4 @@ $detailsbus->bustable();
 $detailsbus->delete();
 $detailsbus->dataedit();
 $detailsbus->updatdata();
+

@@ -1,9 +1,9 @@
 <?php
 require("query.php");
 
-$ss = $detailsbus->dataplace();
-$aa = $detailsbus->datacategory();
-$hh = $detailsbus->bustable();
+$detailsplace = $detailsbus->dataplace();
+$detailscategory = $detailsbus->datacategory();
+$bustbldet = $detailsbus->bustable();
 $editdata = $detailsbus->dataedit();
 ?>
 <!DOCTYPE html>
@@ -30,8 +30,6 @@ $editdata = $detailsbus->dataedit();
             justify-content: center;
             align-items: center;
         }
-
-
         .popupboxd {
             display: flex;
             position: fixed;
@@ -44,12 +42,10 @@ $editdata = $detailsbus->dataedit();
             justify-content: center;
             align-items: center;
         }
-
         .inputbox {
             width: 35%;
             margin: auto;
             height: 550px;
-
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -64,7 +60,6 @@ $editdata = $detailsbus->dataedit();
             width: 100%;
             height: 30px;
         }
-
         .btns {
             width: 80px;
             border-radius: 3px;
@@ -74,7 +69,6 @@ $editdata = $detailsbus->dataedit();
             color: #ffffff;
             border: none;
         }
-
         .close-btn {
             background-color: red;
             color: #ffffff;
@@ -84,7 +78,6 @@ $editdata = $detailsbus->dataedit();
             border-radius: 3px;
             margin-right: 10px;
         }
-
         .submit-btn {
             background-color: green;
             color: #ffffff;
@@ -93,11 +86,9 @@ $editdata = $detailsbus->dataedit();
             border: none;
             border-radius: 3px;
         }
-
         .inboxform {
             margin-bottom: 50px;
         }
-
         .btnsub {
             width: 100px;
             height: 40px;
@@ -107,16 +98,13 @@ $editdata = $detailsbus->dataedit();
             color: white;
             margin-top: 10px;
         }
-
         .sub {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .img{
+        .img {
             width: 35px;
-
-
         }
     </style>
 </head>
@@ -147,15 +135,15 @@ $editdata = $detailsbus->dataedit();
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($hh as $loop) {
-                           echo '<tr>
+                        foreach ($bustbldet as $loop) {
+                            echo '<tr>
                            <td>' . $loop["id"] . '</td>
                            <td>' . $loop["bus"] . '</td>
                            <td>' . $loop["types"] . '</td>
                            <td>' . $loop["froms"] . '</td>
                            <td>' . $loop["tos"] . '</td>
                            <td>' . $loop["dates"] . '</td>
-                           <td><img src="'.$loop["images"].'" class="img"/></td>
+                           <td><img src="' . $loop["images"] . '" class="img"/></td>
                            <td>' . $loop["reg_date"] . '</td>
                            <td>
                             <div class="btned" style="display:flex; gap:5px">
@@ -178,7 +166,7 @@ $editdata = $detailsbus->dataedit();
     <div class="popupbox" id="popupBox">
         <div class="inputbox">
             <form action="query.php" method="post" class="inboxform" enctype="multipart/form-data">
-            <div style="text-align:right;" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></div>
+                <div style="text-align:right;" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></div>
                 <h4 style="margin-bottom: 30px;">Add Bus Details</h4>
                 <label style="color:#838383;">Bus Name</label>
                 <input type="text" name=" buss" style="width:100%;border:1px solid #9c97974d; height:36px;border-radius:5px;" />
@@ -187,7 +175,7 @@ $editdata = $detailsbus->dataedit();
                 <select class="form-select" aria-label="Default select example" name="bustype" require>
                     <option selected>select type</option>
                     <?php
-                    foreach ($aa as $loop) {
+                    foreach ($detailscategory as $loop) {
                         echo '
                     <option value="' . $loop["categoryname"] . '">' . $loop["categoryname"] . '</option>';
                     }
@@ -197,7 +185,7 @@ $editdata = $detailsbus->dataedit();
                 <select class="form-select" aria-label="Default select example" name="placefrom" require>
                     <option selected>select place</option>
                     <?php
-                    foreach ($ss as $loop) {
+                    foreach ($detailsplace as $loop) {
                         echo '
                     <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
                     }
@@ -207,29 +195,29 @@ $editdata = $detailsbus->dataedit();
                 <select class="form-select" aria-label="Default select example" name="placeto" require>
                     <option selected>select place</option>
                     <?php
-                    foreach ($ss as $loop) {
+                    foreach ($detailsplace as $loop) {
                         echo '
                     <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
                     }
                     ?>
                 </select>
                 <div class="inputdate pt-3">
-                    <input type="date" name="dateinput" require style="height: 40px; border:1px solid #ececec; padding:10px;"/>
+                    <input type="date" name="dateinput" require style="height: 40px; border:1px solid #ececec; padding:10px;" />
                 </div>
-                
-                <input type="file" name="imguplod"/> 
+
+                <input type="file" name="imguplod" />
                 <div class="sub">
                     <button type="submit" name="submitbtns" class="btnsub">Submit</button>
                 </div>
             </form>
-    
+
         </div>
     </div>
     <?php
     if (isset($_POST["edeit"])) {
-        
+
         foreach ($editdata as $update) {
-            
+
             echo '
     <div class="popupboxd" >
         <div class="inputbox">
@@ -241,22 +229,22 @@ $editdata = $detailsbus->dataedit();
                 <label style="color:#838383;">type bus</label>
                 <select class="form-select" aria-label="Default select example" name="bustype" require>
                 <option value="' . $update['types'] . '" selected>' . $update["types"] . '</option>';
-                 ?>
+    ?>
             <?php
-            foreach ($aa as $loop) {
+            foreach ($detailscategory as $loop) {
                 echo '
                     <option value="' . $loop["categoryname"] . '">' . $loop["categoryname"] . '</option>';
             }
             ?>
             <?php
-            echo 
-              ' </select>
+            echo
+            ' </select>
                 <label style="color:#838383;">From</label>
                 <select class="form-select" aria-label="Default select example" name="placefrom" require>
                 <option  value="' . $update['froms'] . '"  selected>' . $update['froms'] . '</option>';
             ?>
             <?php
-            foreach ($ss as $loop) {
+            foreach ($detailsplace as $loop) {
                 echo '
                     <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
             }
@@ -268,26 +256,25 @@ $editdata = $detailsbus->dataedit();
                 <option  value="' . $update['tos'] . '"  selected> ' . $update['tos'] . ' </option>';
             ?>
             <?php
-            foreach ($ss as $loop) {
+            foreach ($detailsplace as $loop) {
                 echo '
                     <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
             }
             ?>
-
-
-    <?php echo ' 
-                </select>
-               <input type="file" name="imguplod"/> 
-                <div class="inputdate pt-3">
-                <input type="date" name="dateinput" require />
-                </div>
-                <div class="sub">
-                <button type="submit" name="updatebtn" value="' . $update["id"] . '" class="btnsub">Submit</button>
-                </div>
-            </form>
+    <?php 
+    echo ' 
+        </select>
+        <input type="file" name="imguplod"/> 
+        <div class="inputdate pt-3">
+        <input type="date" name="dateinput" require />
+        </div>
+        <div class="sub">
+        <button type="submit" name="updatebtn" value="' . $update["id"] . '" class="btnsub">Submit</button>
+        </div>
+        </form>
         </div>
     </div>';
-    };
+        };
     }
     ?>
     <script src="vendor/jquery/jquery.min.js"></script>

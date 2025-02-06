@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <?php
 require("query.php");
 
@@ -5,8 +6,11 @@ if (!isset($_SESSION['login'])) {
     header("Location: admin/login.php");
 }
 $mk = $detailsbus->busnames();
-$rr = $placelist->placename();
-$sd = $category->categoryname();
+$rr = $detailsbus->placename();
+$sd = $detailsbus->categoryname();
+$ss =$detailsbus->graphfuntion();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +27,6 @@ $sd = $category->categoryname();
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
     <link href="style.css" rel="stylesheet">
 </head>
 
@@ -35,12 +38,11 @@ $sd = $category->categoryname();
             ?>
             <div class="col">
                 <div id="wrapper">
-
                     <div id="content-wrapper" class="d-flex flex-column">
                         <div id="content">
                             <div class="container-fluid">
-                                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                    <h1 class="h3 mb-0 text-gray-800">BUS DETAILS</h1>
+                                <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-2">
+                                    <h1 class="h3 mb-0 text-gray-900">BUS DETAILS</h1>
                                 </div>
                                 <div class="row">
                                     <div class="col-xl-3 col-md-6 mb-4">
@@ -86,8 +88,7 @@ $sd = $category->categoryname();
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Reviews
-                                                        </div>
+                                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Reviews</div>
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col-auto pl-3">
                                                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">60%</div>
@@ -130,34 +131,11 @@ $sd = $category->categoryname();
                                             <div
                                                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                                 <h6 class="m-0 font-weight-bold text-primary">Chart Overview</h6>
-                                                <div class="dropdown no-arrow">
-                                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                                    </a>
-                                                </div>
+                                                <div class="dropdown no-arrow"></div>
                                             </div>
                                             <div class="card-body">
+                                                
                                                 <div class="chart-area"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-5">
-                                        <div class="card shadow mb-4">
-                                            <div
-                                                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                                                <div class="dropdown no-arrow">
-                                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="chart-pie pt-4 pb-2">
-                                                    <canvas id="myPieChart"></canvas>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -166,9 +144,6 @@ $sd = $category->categoryname();
                         </div>
                     </div>
                 </div>
-                <a class="scroll-to-top rounded" href="#page-top">
-                    <i class="fas fa-angle-up"></i>
-                </a>
                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -176,7 +151,7 @@ $sd = $category->categoryname();
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
                                 </button>
                             </div>
                             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
@@ -197,6 +172,43 @@ $sd = $category->categoryname();
             </div>
         </div>
     </div>
+    <script>
+        var options = {
+            series: [{
+                name: "Desktops",
+                data:<?php echo  json_encode($ss) ?>,
+            }],
+            chart: {
+                height: 350,
+                type: 'line',
+                zoom: {
+                    enabled: false
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'straight'
+            },
+            title: {
+                text: 'Product Trends by Month',
+                align: 'left'
+            },
+            grid: {
+                row: {
+                    colors: ['#f3f3f3', 'transparent'],
+                    opacity: 0.5
+                },
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector(".chart-area"), options);
+        chart.render();
+    </script>
 </body>
 
 </html>

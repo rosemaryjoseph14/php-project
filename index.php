@@ -1,3 +1,8 @@
+<?php
+require("query.php");
+
+$detailsplace = $detailsbus->dataplace();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,27 +31,38 @@
         </div>
         <div class="bsb-hero-5 bsb-overlay " style="background-image: url('asset/banner\ background.png'); height:250px;"></div>
     </div>
-  
+
     <div class="container box ">
         <div class="row  w-100 h-75 bgcolor">
-            <div class="col col-xl-2">
-                <input type="text" class="input" placeholder="From" />
-            </div>
-            <div class="col col-xl-2">
-                <input type="text" class="input" placeholder="To" />
-            </div>
-            <div class="col col-xl-2">
+            <select class="form-select w-25 h-50 mt-4 me-3" aria-label="Default select example" name="placefrom" require>
+                <option selected>select place</option>
+                <?php
+                foreach ($detailsplace as $loop) {
+                    echo '
+            <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
+                }
+                ?>
+            </select>
+            <select class="form-select w-25 h-50 mt-4" aria-label="Default select example" name="placeto" require>
+                <option selected>select place</option>
+                <?php
+                foreach ($detailsplace as $loop) {
+                    echo '
+                    <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
+                }
+                ?>
+            </select>
+            <div class="col">
                 <input type="date" class="input" placeholder="Date/Time" />
             </div>
-            <div class="col col-xl-2">
+            <div class="col">
                 <label class="return">Return (Optional)</label>
                 <input type="date" class="inputs" placeholder="Date/Time" />
             </div>
-
-    <div class="col col-xl-2">
-    <a href="../php project/searchbus.php" ><button type="button" class="button">Search Buses</button></a>
-    </div>
-    </div>
+            <div class="col">
+                <a href="../php project/searchbus.php"><button type="submit" class="button" name="searchbutn">Search Buses</button></a>
+            </div>
+        </div>
     </div>
     <div class="container">
         <div class="row bodybox">

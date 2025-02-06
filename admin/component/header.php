@@ -1,10 +1,9 @@
-
 <?php
 
-if(isset($_POST['logout'])){ 
-   
-        unset($_SESSION['login']);
-        header("location:../login.php");
+if (isset($_POST['logout'])) {
+
+    unset($_SESSION['login']);
+    header("location:../login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -20,19 +19,20 @@ if(isset($_POST['logout'])){
     <link href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
     <title>Document</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
         <div class="iconmenu">
-            <button class="buttonmenuicon" onclick="menubarfn()" style="border: none; background:none">
-            <i class="fa-solid fa-bars"></i>
+            <button class="buttonmenuicon" onclick="menubarfn()" style="border: none; background:none; padding-left:20px;">
+                <i class="fa-solid fa-bars"></i>
             </button>
         </div>
-<ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown no-arrow mx-1">
                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <form method="post" action="">
-                    <button name="logout" type="submit" style="border: none; background:none"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                        <button name="logout" type="submit" style="border: none; background:none"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                     </form>
                 </a>
             </li>
@@ -78,8 +78,9 @@ if(isset($_POST['logout'])){
             </li>
         </ul>
     </nav>
-<script src="../js/script.js"></script>
-<script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
+    <script src="../js/script.js"></script>
+    <script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

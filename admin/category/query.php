@@ -64,18 +64,14 @@ class Category extends DBconn
         $sql = "UPDATE category SET categoryname='$this->subbt' WHERE id='$this->editbtn'";
         $this->conn->exec($sql);
         header("location:index.php");
-      }
-    
+      }   
       catch(PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
       }
     }
-
-
     if (isset($_POST["cancel"])) {
       header("location:index.php");
-    }
-    
+    }  
   }
   public function delete()
   {

@@ -1,7 +1,7 @@
 <?php
 require("query.php");
-$dd = $placelist->dataplace();
-$hh= $placelist->dataedit();
+$dataplacedtl = $placelist->dataplace();
+$dataeditdtl= $placelist->dataedit();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +49,7 @@ $hh= $placelist->dataedit();
 <body>
 <?php
       if(isset($_POST["edit"])){
-        foreach ($hh as $loop){
+        foreach ($dataeditdtl as $loop){
         echo 
         '<div class="popupbox">
         <div class="inputbox">
@@ -65,7 +65,7 @@ $hh= $placelist->dataedit();
         </div>
         </div>';
       }};   
-?>
+ ?>
     <div class="container-fluied">
         <div class="row w-100">
             <?php
@@ -86,7 +86,7 @@ $hh= $placelist->dataedit();
                     </thead>
                 <tbody>
             <?php
-    foreach ($dd as $loop){
+    foreach ($dataplacedtl as $loop){
    echo
    '<tr>
     <td>' . $loop["id"] . '</td>
