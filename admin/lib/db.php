@@ -1,9 +1,5 @@
 <?php
-
-
 require("conn.php");
-
-
 
 class DBconn extends Connect
 {
@@ -12,16 +8,12 @@ class DBconn extends Connect
     {
         parent::__construct();
     }
-
     public function dbCheck()
     {
-
         try {
             $stmt = $this->conn->query("SHOW DATABASES LIKE '$this->database'");
             $exists = $stmt->fetch(PDO::FETCH_ASSOC);
-
             if ($exists) {
-                //echo "Database '$this->database' exists.";
             } else {
                 $sql = "CREATE DATABASE IF NOT EXISTS $this->database";
                 $this->conn->exec($sql);
@@ -35,7 +27,6 @@ class DBconn extends Connect
         try {
             $this->conn =  new PDO("mysql:host=localhost;dbname=busdetails", "root", "");
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            //echo "db";
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
@@ -43,5 +34,4 @@ class DBconn extends Connect
 }
 
 $db = new DBconn();
-
 $db->dbCheck();

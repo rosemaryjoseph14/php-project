@@ -8,7 +8,6 @@ if (isset($_POST['logout'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,5 +81,4 @@ if (isset($_POST['logout'])) {
     <script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
 </body>
-
 </html>

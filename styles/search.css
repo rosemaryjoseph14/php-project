@@ -12,23 +12,20 @@
 }
 
 .input {
-    /* width:10%; */
     height: 50px;
     margin-top: 23px;
     border-radius: 5px;
     padding-left: 30px;
 }
-
 .inputs {
-    /* width:10%; */
     height: 50px;
     border-radius: 5px;
     padding-left: 30px;
 }
 .button {
     height: 50px;
-    width: 100%;
-    background-color: #C50B06;
+    width: 80px;
+    background-color: #05ac4a;
     color: #fff;
     border: none;
     margin-top: 23px;

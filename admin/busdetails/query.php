@@ -28,7 +28,6 @@ class Detailsbus extends DBconn
   {
     try {
       $stmt = $this->conn->prepare("SELECT * FROM placelist");
-
       $stmt->execute();
       return $stmt->fetchAll();
       header('location:index.php');
@@ -40,7 +39,6 @@ class Detailsbus extends DBconn
   {
     try {
       $stmt = $this->conn->prepare("SELECT * FROM category");
-
       $stmt->execute();
       return $stmt->fetchAll();
       header("location:index.php");
@@ -50,7 +48,7 @@ class Detailsbus extends DBconn
   }
   public function submitdata()
   {
-    if (isset($_POST["submitbtns"])) {
+    if (isset($_POST["submitbtns"])){
       $this->name = $_POST['buss'];
       $this->type = $_POST['bustype'];
       $this->placefrom = $_POST['placefrom'];
@@ -62,7 +60,7 @@ class Detailsbus extends DBconn
       $pathname = $upl . basename($this->file['name']);
       $allowedExts = array("jpeg", "jpg", "png");
       $extension = strtolower(pathinfo($pathname, PATHINFO_EXTENSION));
-      
+
       if ($this->file["size"] < 90000000 && in_array($extension, $allowedExts)) {
         if (move_uploaded_file($this->file['tmp_name'], $pathname)) {
           try {
@@ -73,7 +71,7 @@ class Detailsbus extends DBconn
           } catch (PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
           };
-        } 
+        }
       } else {
         echo 'Error: Invalid file size or file extension.';
       }
@@ -106,8 +104,6 @@ class Detailsbus extends DBconn
   {
     if (isset($_POST["edeit"])) {
       $this->name = $_POST['edeit'];
-
-
       try {
         $this->editbt = $this->conn->prepare("SELECT * FROM detailsbus WHERE id='$this->name'");
         $this->editbt->execute();
@@ -119,7 +115,6 @@ class Detailsbus extends DBconn
   }
   public function updatdata()
   {
-
     if (isset($_POST['updatebtn'])) {
       $this->editbtn = $_POST["updatebtn"];
       $this->ebusname = $_POST["buss"];
@@ -140,7 +135,6 @@ class Detailsbus extends DBconn
       header("location:index.php");
     }
   }
-
 };
 
 $detailsbus = new Detailsbus();
@@ -151,4 +145,3 @@ $detailsbus->bustable();
 $detailsbus->delete();
 $detailsbus->dataedit();
 $detailsbus->updatdata();
-

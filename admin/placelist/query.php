@@ -1,6 +1,5 @@
 <?php
 require("../lib/db.php");
-
 class Placelist extends DBconn
 {
   public $stmt;
@@ -11,8 +10,6 @@ class Placelist extends DBconn
   public $subbt;
   public $deletebtn;
 
-
-
   public function __construct()
   {
     $this->dbConnect();
@@ -20,12 +17,10 @@ class Placelist extends DBconn
 
   public function insertdata()
   {
-
     if (isset($_POST['addpl'])) {
       $this->name = $_POST["placename"];
       try {
-        $sql = "INSERT INTO placelist (placename)
-        VALUES ('$this->name')";
+        $sql = "INSERT INTO placelist (placename)VALUES ('$this->name')";
         $this->conn->exec($sql);
         header("location:index.php");
       } catch (PDOException $e) {
@@ -37,7 +32,6 @@ class Placelist extends DBconn
   {
     try {
       $stmt = $this->conn->prepare("SELECT * FROM placelist");
-
       $stmt->execute();
       return $stmt->fetchAll();
       header("location:index.php");
@@ -59,7 +53,6 @@ class Placelist extends DBconn
       echo "Error: " . $e->getMessage();
     }
   }
-
   public function submitdata()
   {
 
@@ -70,16 +63,14 @@ class Placelist extends DBconn
         $sql = "UPDATE placelist SET placename='$this->subbt' WHERE id='$this->editbtn'";
         $this->conn->exec($sql);
         header("location:index.php");
+      } catch (PDOException $e) {
+        echo $sql . "<br>" . $e->getMessage();
       }
-     
-      catch(PDOException $e) {
-        echo $sql . "<br>" . $e->getMessage();}
     }
     if (isset($_POST["cancel"])) {
       header("location:index.php");
-    }  
+    }
   }
-
   public function delete()
   {
     if (isset($_POST["delete"])) {
@@ -88,11 +79,10 @@ class Placelist extends DBconn
         $sql = "DELETE FROM placelist WHERE id='$this->deletebtn'";
         $this->conn->exec($sql);
         header("location:index.php");
-      } catch(PDOException $e) {
+      } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
       }
     }
-    
   }
 };
 $placelist = new Placelist();
@@ -101,8 +91,3 @@ $placelist->dataplace();
 $placelist->dataedit();
 $placelist->submitdata();
 $placelist->delete();
-
-
-
-
-

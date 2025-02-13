@@ -24,7 +24,7 @@ class Login extends DBconn
         $this->stmt = $this->conn->prepare("SELECT FOUND_ROWS()");
         $this->stmt->execute();
         if ($this->stmt->fetchColumn()) {
-          $_SESSION['login']="login successed";
+          $_SESSION['login'] = "login successed";
           header("location:dashbord/index.php");
         } else {
           echo "error";

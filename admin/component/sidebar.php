@@ -28,7 +28,6 @@
                     </a>
                 </li>
                 <div class="sidebar-heading ml-3 mt-3">Interface</div>
-
                 <a href="../category" style="color: white;  margin-left:20px; margin-top:10px; margin-bottom:10px;">Category</a>
                 <a href="../placelist" style="color: white; margin-left:20px;  margin-top:10px; margin-bottom:10px;">placelist</a>
                 <a href="../busdetails" style="color: white; margin-left:20px;  margin-top:10px; margin-bottom:10px;">busdetails</a>
@@ -37,7 +36,6 @@
             </ul>
         </div>
     </div>
-
     <script src="../js/script.js"></script>
 </body>
 

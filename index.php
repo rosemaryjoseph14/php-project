@@ -1,7 +1,7 @@
 <?php
 require("query.php");
-
 $detailsplace = $detailsbus->dataplace();
+$detailscategory=$detailsbus->datacategory();
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,6 @@ $detailsplace = $detailsbus->dataplace();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles/style.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <title>Document</title>
 </head>
 
@@ -31,39 +30,44 @@ $detailsplace = $detailsbus->dataplace();
         </div>
         <div class="bsb-hero-5 bsb-overlay " style="background-image: url('asset/banner\ background.png'); height:250px;"></div>
     </div>
-
-    <div class="container box ">
-        <div class="row  w-100 h-75 bgcolor">
-            <select class="form-select w-25 h-50 mt-4 me-3" aria-label="Default select example" name="placefrom" require>
-                <option selected>select place</option>
-                <?php
-                foreach ($detailsplace as $loop) {
-                    echo '
-            <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
-                }
-                ?>
-            </select>
-            <select class="form-select w-25 h-50 mt-4" aria-label="Default select example" name="placeto" require>
-                <option selected>select place</option>
-                <?php
-                foreach ($detailsplace as $loop) {
-                    echo '
-                    <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
-                }
-                ?>
-            </select>
-            <div class="col">
-                <input type="date" class="input" placeholder="Date/Time" />
+    <div class="container box">
+        <form action="../php project/searchbus.php" method="GET">
+            <div class="row w-100 bgcolor">
+                <select class="form-select w-25 mt-4 me-3" aria-label="Default select example" name="placefrom" required>
+                    <option selected>select place</option>
+                    <?php
+                    foreach ($detailsplace as $loop) {
+                        echo '<option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
+                    }
+                    ?>
+                </select>
+                <select class="form-select w-25 mt-4 me-3" aria-label="Default select example" name="placeto" required>
+                    <option selected>select place</option>
+                    <?php
+                    foreach ($detailsplace as $loop) {
+                        echo '<option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
+                    }
+                    ?>
+                </select>
+           
+                <select class="form-select w-25 mt-4" aria-label="Default select example" name="bustype" required>
+                    <option selected>select Type</option>
+                    <?php
+                    foreach ($detailscategory as $loop) {
+                        echo '<option value="' . $loop["categoryname"] . '">' . $loop["categoryname"] . '</option>';
+                    }
+                    ?>
+                </select>
+                <div class="col">
+                    <input type="date" class="input" name="date" required />
+                </div>
+                <div class="col">
+                    <button type="submit" class="button" name="searchbutn">Search Buses</button>
+                </div>
             </div>
-            <div class="col">
-                <label class="return">Return (Optional)</label>
-                <input type="date" class="inputs" placeholder="Date/Time" />
-            </div>
-            <div class="col">
-                <a href="../php project/searchbus.php"><button type="submit" class="button" name="searchbutn">Search Buses</button></a>
-            </div>
-        </div>
+        </form>
     </div>
+
     <div class="container">
         <div class="row bodybox">
             <div class="col col-xl-2">
@@ -206,7 +210,7 @@ $detailsplace = $detailsbus->dataplace();
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

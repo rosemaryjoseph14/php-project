@@ -41,11 +41,11 @@ class Dashboard extends DBconn
     public function graphfuntion(){
       try {
         $sql = $this->conn->prepare("SELECT DATE_FORMAT(reg_date, '%Y-%m-%d') AS Date, COUNT(bus) AS no_of_rows FROM detailsbus GROUP BY Date ORDER BY Date");
-        $sql->execute(); // Execute the query
-        $result = $sql->fetchAll(PDO::FETCH_ASSOC); // Fetch results as an associative array
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         
         $no_of_rows=[];
-        if (count($result) > 0) { // Check if results exist
+        if (count($result) > 0) {
             foreach ($result as $row) {
                $no_of_rows[]= $row['no_of_rows'];
             }

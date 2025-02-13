@@ -5,11 +5,10 @@ require("query.php");
 if (!isset($_SESSION['login'])) {
     header("Location: admin/login.php");
 }
-$mk = $detailsbus->busnames();
-$rr = $detailsbus->placename();
-$sd = $detailsbus->categoryname();
-$ss =$detailsbus->graphfuntion();
-
+$busnamedetl = $detailsbus->busnames();
+$placenamedetl = $detailsbus->placename();
+$categorydetl = $detailsbus->categoryname();
+$graphdetl = $detailsbus->graphfuntion();
 
 ?>
 <!DOCTYPE html>
@@ -51,7 +50,7 @@ $ss =$detailsbus->graphfuntion();
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
                                                         <?php
-                                                        foreach ($mk as $loop) {
+                                                        foreach ($busnamedetl as $loop) {
                                                             echo '
                                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                             Total Number of Buses</div>
@@ -70,7 +69,7 @@ $ss =$detailsbus->graphfuntion();
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
                                                         <?php
-                                                        foreach ($rr as $loop) {
+                                                        foreach ($placenamedetl as $loop) {
                                                             echo '
                                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1 pl-3">
                                                             placelist
@@ -112,7 +111,7 @@ $ss =$detailsbus->graphfuntion();
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
                                                         <?php
-                                                        foreach ($sd as $loop) {
+                                                        foreach ($categorydetl as $loop) {
                                                             echo '
                                                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1 pl-3">
                                                             Categorys</div>
@@ -134,7 +133,6 @@ $ss =$detailsbus->graphfuntion();
                                                 <div class="dropdown no-arrow"></div>
                                             </div>
                                             <div class="card-body">
-                                                
                                                 <div class="chart-area"></div>
                                             </div>
                                         </div>
@@ -151,7 +149,7 @@ $ss =$detailsbus->graphfuntion();
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"></span>
+                                    <span aria-hidden="true"></span>
                                 </button>
                             </div>
                             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
@@ -176,7 +174,7 @@ $ss =$detailsbus->graphfuntion();
         var options = {
             series: [{
                 name: "Desktops",
-                data:<?php echo  json_encode($ss) ?>,
+                data: <?php echo  json_encode($graphdetl) ?>,
             }],
             chart: {
                 height: 350,

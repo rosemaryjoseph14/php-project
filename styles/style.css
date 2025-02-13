@@ -12,12 +12,11 @@
 .box {
     height: 200px;
 }
-
 .input {
     height: 50px;
     margin-top: 23px;
     border-radius: 5px;
-    padding-left: 30px;
+    padding-left: 10px;
 }
 
 .inputs {

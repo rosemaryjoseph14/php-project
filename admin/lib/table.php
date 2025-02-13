@@ -19,20 +19,17 @@ class Table extends DBconn
             categoryname VARCHAR(30) NOT NULL,
             reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )";
-
         $this->login = "CREATE TABLE IF NOT EXISTS adminlogin (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             email VARCHAR(30) NOT NULL,
             password VARCHAR(30) NOT NULL,
             reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )";
-
         $this->place = "CREATE TABLE IF NOT EXISTS placelist (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             placename VARCHAR(30) NOT NULL,
             reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )";
-
         $this->details = "CREATE TABLE IF NOT EXISTS detailsbus (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             bus VARCHAR(30) NOT NULL,
@@ -43,7 +40,6 @@ class Table extends DBconn
             images VARCHAR(500) NOT NULL,
             reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )";
-
         try {
             $this->conn->exec($this->sql);
             echo "Table category created successfully";

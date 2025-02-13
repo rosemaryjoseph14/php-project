@@ -1,7 +1,7 @@
 <?php
 require("query.php");
 $dataplacedtl = $placelist->dataplace();
-$dataeditdtl= $placelist->dataedit();
+$dataeditdtl = $placelist->dataedit();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,58 +18,61 @@ $dataeditdtl= $placelist->dataedit();
     <title>Document</title>
 </head>
 <style>
-    .popupbox{
+    .popupbox {
         width: 100%;
         position: absolute;
-        z-index:2 ;
+        z-index: 2;
         height: 100vh;
         display: flex;
         background-color: #00000057;
     }
-    .inputbox{
+
+    .inputbox {
         width: 30%;
         height: 200px;
-        margin: auto; 
+        margin: auto;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 5px;
         background-color: #ffffff;
     }
-  .inputedit{
-    border-radius: 5px;
-    
-  }
-  .btn{
-    background-color: #0236b5;
-    color: #ffffff;
-  }
 
+    .inputedit {
+        border-radius: 5px;
+    }
+
+    .btn {
+        background-color: #0236b5;
+        color: #ffffff;
+    }
 </style>
+
 <body>
-<?php
-      if(isset($_POST["edit"])){
-        foreach ($dataeditdtl as $loop){
-        echo 
-        '<div class="popupbox">
+    <?php
+    if (isset($_POST["edit"])) {
+        foreach ($dataeditdtl as $loop) {
+            echo
+            '<div class="popupbox">
         <div class="inputbox">
         <form action="query.php" method="post">
         <div class="inputbtn">
-        <input type="text" name="editinput"  value="'. $loop["placename"] .'" class="inputedit mb-2"/>
+        <input type="text" name="editinput"  value="' . $loop["placename"] . '" class="inputedit mb-2"/>
         </div>
         <div>
         <button type="submit" name="cancel"  style="background:red; color:#ffffff; width:90px; height:30px; border:none; border-radius:3px">Cancel</button>
-        <button type="submit" name="submit"  value="'. $loop["id"] .'" style="background:green; color:#ffffff; width:90px; height:30px; border:none; border-radius:3px">Submit</button>
+        <button type="submit" name="submit"  value="' . $loop["id"] . '" style="background:green; color:#ffffff; width:90px; height:30px; border:none; border-radius:3px">Submit</button>
         </div>
         </form>
         </div>
         </div>';
-      }};   
- ?>
+        }
+    };
+    ?>
     <div class="container-fluied">
         <div class="row w-100">
             <?php
-            require("../component/sidebar.php");           
+            require("../component/sidebar.php");
             ?>
             <div class="col">
                 <form action="query.php" method="post">
@@ -84,26 +87,26 @@ $dataeditdtl= $placelist->dataedit();
                             <th>Action</th>
                         </tr>
                     </thead>
-                <tbody>
-            <?php
-    foreach ($dataplacedtl as $loop){
-   echo
-   '<tr>
+                    <tbody>
+                        <?php
+                        foreach ($dataplacedtl as $loop) {
+                            echo
+                            '<tr>
     <td>' . $loop["id"] . '</td>
     <td>' . $loop["placename"] . '</td>              
     <td>
     <div class="btned" style="display:flex; gap:5px">
     <form action=" " method="post">
-    <button type="submit" name="edit" value="'. $loop["id"] .'" style="width:70px; height:30px; border:none; background:none; margin-bottom: 5px; color:#0236b5;"><i class="fa-solid fa-pen-to-square"></i></button>                
+    <button type="submit" name="edit" value="' . $loop["id"] . '" style="width:70px; height:30px; border:none; background:none; margin-bottom: 5px; color:#0236b5;"><i class="fa-solid fa-pen-to-square"></i></button>                
     </form>
     <form action="query.php" method="post">
-    <button type="submit"  value="'. $loop["id"] .'" name="delete" style="width:70px; height:30px ;border:none; background:none; color:#c40f0f;" ><i class="fa-solid fa-trash"></i></button>
+    <button type="submit"  value="' . $loop["id"] . '" name="delete" style="width:70px; height:30px ;border:none; background:none; color:#c40f0f;" ><i class="fa-solid fa-trash"></i></button>
     </form>
     </div>
     </td>
     </tr>';
-}
-?>
+    }
+                        ?>
 
                     </tbody>
                 </table>
@@ -120,5 +123,4 @@ $dataeditdtl= $placelist->dataedit();
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
     <script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
 </body>
-
 </html>

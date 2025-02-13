@@ -30,6 +30,7 @@ $editdata = $detailsbus->dataedit();
             justify-content: center;
             align-items: center;
         }
+
         .popupboxd {
             display: flex;
             position: fixed;
@@ -42,6 +43,7 @@ $editdata = $detailsbus->dataedit();
             justify-content: center;
             align-items: center;
         }
+
         .inputbox {
             width: 35%;
             margin: auto;
@@ -108,7 +110,6 @@ $editdata = $detailsbus->dataedit();
         }
     </style>
 </head>
-
 <body>
     <div class="container-fluid">
         <div class="row w-100">
@@ -210,15 +211,14 @@ $editdata = $detailsbus->dataedit();
                     <button type="submit" name="submitbtns" class="btnsub">Submit</button>
                 </div>
             </form>
-
         </div>
     </div>
     <?php
     if (isset($_POST["edeit"])) {
 
-        foreach ($editdata as $update) {
+    foreach ($editdata as $update) {
 
-            echo '
+    echo '
     <div class="popupboxd" >
         <div class="inputbox">
             <form action="query.php" method="post" class="inboxform">
@@ -261,8 +261,8 @@ $editdata = $detailsbus->dataedit();
                     <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
             }
             ?>
-    <?php 
-    echo ' 
+    <?php
+        echo ' 
         </select>
         <input type="file" name="imguplod"/> 
         <div class="inputdate pt-3">
@@ -273,7 +273,7 @@ $editdata = $detailsbus->dataedit();
         </div>
         </form>
         </div>
-    </div>';
+        </div>';
         };
     }
     ?>
