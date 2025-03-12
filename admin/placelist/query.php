@@ -53,6 +53,7 @@ class Placelist extends DBconn
       echo "Error: " . $e->getMessage();
     }
   }
+  
   public function submitdata()
   {
 

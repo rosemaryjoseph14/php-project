@@ -46,7 +46,13 @@ $dataeditdtl = $placelist->dataedit();
         background-color: #0236b5;
         color: #ffffff;
     }
+
+    #wrapper {
+        display: block !important;
+
+    }
 </style>
+
 
 <body>
     <?php
@@ -69,29 +75,38 @@ $dataeditdtl = $placelist->dataedit();
         }
     };
     ?>
-    <div class="container-fluied">
+    <div class="container-fluid">
         <div class="row w-100">
             <?php
-            require("../component/sidebar.php");
+            include("../component/header.php");
+
             ?>
-            <div class="col">
-                <form action="query.php" method="post">
-                    <input type="text" placeholder="Add place" name="placename" />
-                    <button type="submit" style="border:none; background:#0236b5; margin-left: 10px ;color:white; width:70px; height:30px; border-radius:3px; margin-bottom:30px;" name="addpl">Add</button>
-                </form>
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>Places</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        foreach ($dataplacedtl as $loop) {
-                            echo
-                            '<tr>
+            <div id="sidebarbox">
+
+                <?php
+                require("../component/sidebar.php");
+                ?>
+
+            </div>
+            <div id="content-wrapper">
+                <div id="wrapper" class="col">
+                    <form action="query.php" method="post">
+                        <input type="text" placeholder="Add place" name="placename" />
+                        <button type="submit" style="border:none; background:#0236b5; margin-left: 10px ;color:white; width:70px; height:30px; border-radius:3px; margin-bottom:30px;" name="addpl">Add</button>
+                    </form>
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Places</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($dataplacedtl as $loop) {
+                                echo
+                                '<tr>
     <td>' . $loop["id"] . '</td>
     <td>' . $loop["placename"] . '</td>              
     <td>
@@ -105,22 +120,29 @@ $dataeditdtl = $placelist->dataedit();
     </div>
     </td>
     </tr>';
-    }
-                        ?>
+                            }
+                            ?>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
-    <script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+        <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+        <script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
+        <script>
+            document.getElementById("content-wrapper").style.transition = "all 1s";
+            document.getElementById("content-wrapper").style.marginLeft = "17%";
+            document.getElementById("sidebarbox").style.marginLeft = "-1%";
+            document.getElementById("content-wrapper").style.width = "84%";
+            document.getElementById("content-wrapper").style.float = "right";
+        </script>
 </body>
+
 </html>

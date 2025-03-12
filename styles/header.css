@@ -3,6 +3,7 @@
     float: left;
     margin-left: 30px;
 }
+
 .nav {
     margin-right: 30px;
 }
@@ -13,7 +14,7 @@
 }
 
 .navbar {
-    height: 60px;
+    height: 90px;
     background-color: #fff;
     display: flex;
     justify-content: space-between;
@@ -22,6 +23,13 @@
 
 .navbarlogo {
     margin-left: 30px;
-    font-family: 'Segoe Print';
-    font-size: 15px;
+}
+.logo{
+    width: 80px;
+    height: 50px;
+
+}
+.btnnav{
+    text-decoration: none;
+    color: #000;
 }

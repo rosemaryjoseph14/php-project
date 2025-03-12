@@ -84,8 +84,7 @@ class Category extends DBconn
       } catch(PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
       }
-    }
-    
+    }    
   }
 };
 $category = new Category();

@@ -48,7 +48,7 @@ class Detailsbus extends DBconn
   }
   public function submitdata()
   {
-    if (isset($_POST["submitbtns"])){
+    if (isset($_POST["submitbtns"])) {
       $this->name = $_POST['buss'];
       $this->type = $_POST['bustype'];
       $this->placefrom = $_POST['placefrom'];
@@ -57,6 +57,7 @@ class Detailsbus extends DBconn
       $this->date = $_POST['dateinput'];
 
       $upl = "../../uploads/";
+      $baseName = basename($this->file['name']);
       $pathname = $upl . basename($this->file['name']);
       $allowedExts = array("jpeg", "jpg", "png");
       $extension = strtolower(pathinfo($pathname, PATHINFO_EXTENSION));
@@ -65,7 +66,7 @@ class Detailsbus extends DBconn
         if (move_uploaded_file($this->file['tmp_name'], $pathname)) {
           try {
             $sql = "INSERT INTO detailsbus (bus, types, froms, tos, images, dates)
-          VALUES('$this->name', '$this->type', '$this->placefrom', '$this->placeto', '$pathname', '$this->date')";
+          VALUES('$this->name', '$this->type', '$this->placefrom', '$this->placeto', '$baseName', '$this->date')";
             $this->conn->exec($sql);
             header("location:index.php");
           } catch (PDOException $e) {

@@ -8,6 +8,7 @@ if (isset($_POST['logout'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +32,7 @@ if (isset($_POST['logout'])) {
                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <form method="post" action="">
-                        <button name="logout" type="submit" style="border: none; background:none"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                        <button name="logout" type="submit" style="border: none; background:none; margin-top:15px;"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                     </form>
                 </a>
             </li>
@@ -81,4 +82,5 @@ if (isset($_POST['logout'])) {
     <script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

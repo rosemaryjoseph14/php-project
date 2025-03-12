@@ -1,7 +1,7 @@
 <?php
 require("query.php");
 $detailsplace = $detailsbus->dataplace();
-$detailscategory=$detailsbus->datacategory();
+$detailscategory = $detailsbus->datacategory();
 ?>
 
 <!DOCTYPE html>
@@ -11,8 +11,9 @@ $detailscategory=$detailsbus->datacategory();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
+    <title>DetailsBus</title>
 </head>
 
 <body>
@@ -24,16 +25,16 @@ $detailscategory=$detailsbus->datacategory();
             <div class="col-12 col-md-11 col-lg-9 col-xl-8 col-xxl-7">
                 <p class="display-4 textcolor text-center fw-semibold mb-4">Comfort & Style Over Every Mile</p>
                 <p class="lead textcolor text-center mb-5">
-                    <span class="col-12 col-sm-10 col-md-8 col-xxl-7 fw-semibold">Book my Bus is the leading go-to website for booking inter-city bus online.</span>
+                    <span class="col-12 col-sm-10 col-md-8 col-xxl-7 fw-semibold">BusMapX is the leading go-to website for booking inter-city bus online.</span>
                 </p>
             </div>
         </div>
-        <div class="bsb-hero-5 bsb-overlay " style="background-image: url('asset/banner\ background.png'); height:250px;"></div>
+        <div class="bsb-hero-5 bsb-overlay " style="background-image: url('asset/banner\ background.png'); height:220px;"></div>
     </div>
     <div class="container box">
         <form action="../php project/searchbus.php" method="GET">
-            <div class="row w-100 bgcolor">
-                <select class="form-select w-25 mt-4 me-3" aria-label="Default select example" name="placefrom" required>
+            <div class="row bgcolor">
+                <select class="form-select mt-4 me-3" aria-label="Default select example" name="placefrom" required>
                     <option selected>select place</option>
                     <?php
                     foreach ($detailsplace as $loop) {
@@ -41,7 +42,7 @@ $detailscategory=$detailsbus->datacategory();
                     }
                     ?>
                 </select>
-                <select class="form-select w-25 mt-4 me-3" aria-label="Default select example" name="placeto" required>
+                <select class="form-select mt-4 me-3" aria-label="Default select example" name="placeto" required>
                     <option selected>select place</option>
                     <?php
                     foreach ($detailsplace as $loop) {
@@ -49,8 +50,8 @@ $detailscategory=$detailsbus->datacategory();
                     }
                     ?>
                 </select>
-           
-                <select class="form-select w-25 mt-4" aria-label="Default select example" name="bustype" required>
+
+                <select class="form-select mt-4" aria-label="Default select example" name="bustype" required>
                     <option selected>select Type</option>
                     <?php
                     foreach ($detailscategory as $loop) {
@@ -61,7 +62,7 @@ $detailscategory=$detailsbus->datacategory();
                 <div class="col">
                     <input type="date" class="input" name="date" required />
                 </div>
-                <div class="col">
+                <div class="col col px-0">
                     <button type="submit" class="button" name="searchbutn">Search Buses</button>
                 </div>
             </div>
@@ -70,19 +71,19 @@ $detailscategory=$detailsbus->datacategory();
 
     <div class="container">
         <div class="row bodybox">
-            <div class="col col-xl-2">
+            <div class="col">
                 <div class="box1">
                     <img src="./asset/icon1.png" class="iconimg" />
                 </div>
             </div>
-            <div class="col col-xl-2">
+            <div class="col">
                 <div class="box2">
-                    <img src="./asset/icon2.png" class="iconimg" />
+                    <img src="./asset/icon2.png" class="iconimg1" />
                 </div>
             </div>
-            <div class="col col-xl-2">
+            <div class="col">
                 <div class="box3">
-                    <img src="./asset/icon 3.png" class="iconimg" />
+                    <img src="./asset/icon 3.png" class="iconimg2" />
                 </div>
             </div>
         </div>
@@ -117,7 +118,7 @@ $detailscategory=$detailsbus->datacategory();
     <div class=" container busdetailsmain p-3">
         <div class="row busdetails">
             <h1 style="font-size:25px; font-weight:600; color:#193066; padding-left:40px;">Bus Ticket Confirmation</h1>
-            <div class="c">
+            <div class="conformation">
                 <ul class="detail">
                     <li>M-Ticket:M-Ticket is short for Mobile ticket and is sent as an SMS to your mobile
                         once you book a bus ticket.it is a confirmation of your reservation and serves as a
@@ -141,76 +142,41 @@ $detailscategory=$detailsbus->datacategory();
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            How do I book a bus ticket on Book My Bus ?
+                        Is this service free to use?
                         </button>
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">To book a ticket, simply visit our website and select your departure and arrival destinations, travel date, and number of passengers.
-                            Browse through available buses, select your preferred one, and complete the payment to confirm your booking.</div>
+                        <div class="accordion-body">Yes, all the information on our website is completely free to access.</div>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            Can I book a return ticket ?
+                        What is this website about?
                         </button>
                     </h2>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Yes, you can cancel your bus ticket booking. Sign in to see your trips to cancel on redBus website on desktop and on mobile.
-                            Enter your ticket number and email id and follow the cancelation procedure. You can also cancel your ticket through the Self Help tool</div>
+                        <div class="accordion-body">This website provides detailed information about buses, including routes, schedules, bus types, and stops. However, we do not offer booking services.</div>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button accordion-buttonn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                            How can I cancel or modify my booking ?
+                        Are the bus details accurate and up to date?
                         </button>
                     </h2>
                     <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Yes, you can book return tickets by selecting the round-trip option during the booking process.
-                            You'll need to enter your return journey details along with your departure details.</div>
+                        <div class="accordion-body">We strive to keep our information as accurate as possible, but schedules may change. Always check with the bus operator for the latest updates.</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footermain">
-        <div class="container footer">
-            <div class="row footerdetails">
-                <div class="col col-xl-3">
-                    <div class="logofooter">BookMyBus</div>
-                </div>
-                <div class="col col-xl-3">
-                    <div class="companydetails">
-                        <h3>Company</h3>
-                        <ul class="companyfooter">
-                            <li>About us</li>
-                            <li>Terms & Conditions</li>
-                            <li>Privacy</li>
-                            <li>Customer Support</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col col-xl-3">
-                    <div class="infofooter">
-                        <h3>Informations</h3>
-                        <ul>
-                            <li>FAQ</li>
-                            <li>privacy policy</li>
-                            <li>Bus timetable</li>
-                            <li>User agreement</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col col-xl-3">
-                    <div class="iconsfooter">
-                        <h3>follow as</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <?php
+   include('footer.php');
+   ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

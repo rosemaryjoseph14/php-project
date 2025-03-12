@@ -12,6 +12,7 @@
 .box {
     height: 200px;
 }
+
 .input {
     height: 50px;
     margin-top: 23px;
@@ -50,34 +51,32 @@
 .box1 {
     width: 100px;
     height: 100px;
-    background-color: #fff;
-    border-radius: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-left: 100px;
 }
 
 .box2 {
     width: 100px;
     height: 100px;
-    background-color: #fff;
-    border-radius: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-left: 140px;
 }
 
 .box3 {
     width: 100px;
     height: 100px;
-    background-color: #fff;
-    border-radius: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-left: 150px;
 }
-
+.form-select{
+    width: 24% !important;
+}
 .iconimg {
+    width: 130px;
+    height: 180px;
+}
+.iconimg1 {
+    width: 120px;
+    height: 160px;
+}
+.iconimg2 {
     width: 130px;
     height: 180px;
 }
@@ -107,11 +106,7 @@
 
 .busdetailsmain {
     margin-top: 50px;
-    height: 450px;
-}
-
-.faqbooking {
-    height: 450px;
+    height: 420px;
 }
 
 .heading {
@@ -123,18 +118,17 @@
 .detail {
     display: flex;
     flex-direction: column;
-    gap: 70px;
+    gap: 60px;
     font-size: 18px;
 }
-
 .detailsfaq {
-    height: 350px;
+    height: 300px;
     margin-top: 60px;
 }
 
 .accordion-button {
     border-radius: 8px !important;
-    border: 1px solid #193066 !important
+    border: 1px solid #d8d8d8!important
 }
 
 .accordion {
@@ -154,6 +148,10 @@
 }
 
 .companydetails ul li {
+    list-style: none;
+    gap: 5px;
+}
+.infofooter ul li{
     list-style: none;
 }
 

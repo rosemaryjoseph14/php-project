@@ -16,7 +16,7 @@ $editdata = $detailsbus->dataedit();
     <link href="style.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
-    <title>Document</title>
+    <title>details</title>
     <style>
         .popupbox {
             display: none;
@@ -47,7 +47,7 @@ $editdata = $detailsbus->dataedit();
         .inputbox {
             width: 35%;
             margin: auto;
-            height: 550px;
+            height: 560px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -62,6 +62,7 @@ $editdata = $detailsbus->dataedit();
             width: 100%;
             height: 30px;
         }
+
         .btns {
             width: 80px;
             border-radius: 3px;
@@ -71,6 +72,7 @@ $editdata = $detailsbus->dataedit();
             color: #ffffff;
             border: none;
         }
+
         .close-btn {
             background-color: red;
             color: #ffffff;
@@ -80,6 +82,7 @@ $editdata = $detailsbus->dataedit();
             border-radius: 3px;
             margin-right: 10px;
         }
+
         .submit-btn {
             background-color: green;
             color: #ffffff;
@@ -88,9 +91,11 @@ $editdata = $detailsbus->dataedit();
             border: none;
             border-radius: 3px;
         }
+
         .inboxform {
             margin-bottom: 50px;
         }
+
         .btnsub {
             width: 100px;
             height: 40px;
@@ -100,51 +105,75 @@ $editdata = $detailsbus->dataedit();
             color: white;
             margin-top: 10px;
         }
+
         .sub {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         .img {
             width: 35px;
         }
+
+        #wrapper {
+            display: block !important;
+
+        }
+
+        /* 
+        .table-responsive {
+            max-width: 1000px;
+    overflow-x: auto;
+} */
     </style>
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row w-100">
             <?php
-            require("../component/sidebar.php");
+            include("../component/header.php");
+
             ?>
-            <div class="col">
-                <form action="query.php" method="post">
-                    <button type="button" class="btns" onclick="showPopup()">Add</button>
-                </form>
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>Bus</th>
-                            <th>Types</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Date</th>
-                            <th>images</th>
-                            <th>reg-date</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        foreach ($bustbldet as $loop) {
-                            echo '<tr>
+            <div id="sidebarbox">
+
+                <?php
+                require("../component/sidebar.php");
+                ?>
+
+            </div>
+            <div id="content-wrapper">
+                <div id="wrapper" class="col">
+                    <form action="query.php" method="post">
+                        <button type="button" class="btns" onclick="showPopup()">Add</button>
+                    </form>
+                    <div class="table-responsive">
+                        <table id="example" class="table table-condensed table-striped" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Bus</th>
+                                    <th>Types</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Date</th>
+                                    <th>images</th>
+                                    <th>reg-date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($bustbldet as $loop) {
+                                    echo '<tr>
                            <td>' . $loop["id"] . '</td>
                            <td>' . $loop["bus"] . '</td>
                            <td>' . $loop["types"] . '</td>
                            <td>' . $loop["froms"] . '</td>
                            <td>' . $loop["tos"] . '</td>
                            <td>' . $loop["dates"] . '</td>
-                           <td><img src="' . $loop["images"] . '" class="img"/></td>
+                           <td><img src="../../uploads/' . $loop["images"] . '" class="img"/></td>
                            <td>' . $loop["reg_date"] . '</td>
                            <td>
                             <div class="btned" style="display:flex; gap:5px">
@@ -157,68 +186,69 @@ $editdata = $detailsbus->dataedit();
                             </div>
                             </td>
                            </tr>';
-                        };
-                        ?>
-                    </tbody>
-                </table>
+                                };
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="popupbox" id="popupBox">
-        <div class="inputbox">
-            <form action="query.php" method="post" class="inboxform" enctype="multipart/form-data">
-                <div style="text-align:right;" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></div>
-                <h4 style="margin-bottom: 30px;">Add Bus Details</h4>
-                <label style="color:#838383;">Bus Name</label>
-                <input type="text" name=" buss" style="width:100%;border:1px solid #9c97974d; height:36px;border-radius:5px;" />
+        <div class="popupbox" id="popupBox">
+            <div class="inputbox">
+                <form action="query.php" method="post" class="inboxform" enctype="multipart/form-data">
+                    <div style="text-align:right; margin-top:50px;" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></div>
+                    <h4 style="margin-bottom: 30px;">Add Bus Details</h4>
+                    <label style="color:#838383;">Bus Name</label>
+                    <input type="text" name=" buss" style="width:100%;border:1px solid #9c97974d; height:36px;border-radius:5px;" />
 
-                <label style="color:#838383;  margin-top:10px;">type bus</label>
-                <select class="form-select" aria-label="Default select example" name="bustype" require>
-                    <option selected>select type</option>
-                    <?php
-                    foreach ($detailscategory as $loop) {
-                        echo '
+                    <label style="color:#838383;  margin-top:10px;">type bus</label>
+                    <select class="form-select" aria-label="Default select example" name="bustype" require>
+                        <option selected>select type</option>
+                        <?php
+                        foreach ($detailscategory as $loop) {
+                            echo '
                     <option value="' . $loop["categoryname"] . '">' . $loop["categoryname"] . '</option>';
-                    }
-                    ?>
-                </select>
-                <label style="color:#838383; margin-top:10px;">From</label>
-                <select class="form-select" aria-label="Default select example" name="placefrom" require>
-                    <option selected>select place</option>
-                    <?php
-                    foreach ($detailsplace as $loop) {
-                        echo '
+                        }
+                        ?>
+                    </select>
+                    <label style="color:#838383; margin-top:10px;">From</label>
+                    <select class="form-select" aria-label="Default select example" name="placefrom" require>
+                        <option selected>select place</option>
+                        <?php
+                        foreach ($detailsplace as $loop) {
+                            echo '
                     <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
-                    }
-                    ?>
-                </select>
-                <label style="color:#838383;  margin-top:10px;">To</label>
-                <select class="form-select" aria-label="Default select example" name="placeto" require>
-                    <option selected>select place</option>
-                    <?php
-                    foreach ($detailsplace as $loop) {
-                        echo '
+                        }
+                        ?>
+                    </select>
+                    <label style="color:#838383;  margin-top:10px;">To</label>
+                    <select class="form-select" aria-label="Default select example" name="placeto" require>
+                        <option selected>select place</option>
+                        <?php
+                        foreach ($detailsplace as $loop) {
+                            echo '
                     <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
-                    }
-                    ?>
-                </select>
-                <div class="inputdate pt-3">
-                    <input type="date" name="dateinput" require style="height: 40px; border:1px solid #ececec; padding:10px;" />
-                </div>
+                        }
+                        ?>
+                    </select>
+                    <div class="inputdate pt-3">
+                        <input type="date" name="dateinput" require style="height: 40px; border:1px solid #ececec; padding:10px;" />
+                    </div>
 
-                <input type="file" name="imguplod" />
-                <div class="sub">
-                    <button type="submit" name="submitbtns" class="btnsub">Submit</button>
-                </div>
-            </form>
+                    <input type="file" name="imguplod" class="imgfile" style="margin-top: 15px;" />
+                    <div class="sub">
+                        <button type="submit" name="submitbtns" class="btnsub">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    <?php
-    if (isset($_POST["edeit"])) {
+        <?php
+        if (isset($_POST["edeit"])) {
 
-    foreach ($editdata as $update) {
+            foreach ($editdata as $update) {
 
-    echo '
+                echo '
     <div class="popupboxd" >
         <div class="inputbox">
             <form action="query.php" method="post" class="inboxform">
@@ -229,40 +259,40 @@ $editdata = $detailsbus->dataedit();
                 <label style="color:#838383;">type bus</label>
                 <select class="form-select" aria-label="Default select example" name="bustype" require>
                 <option value="' . $update['types'] . '" selected>' . $update["types"] . '</option>';
-    ?>
-            <?php
-            foreach ($detailscategory as $loop) {
-                echo '
+        ?>
+                <?php
+                foreach ($detailscategory as $loop) {
+                    echo '
                     <option value="' . $loop["categoryname"] . '">' . $loop["categoryname"] . '</option>';
-            }
-            ?>
-            <?php
-            echo
-            ' </select>
+                }
+                ?>
+                <?php
+                echo
+                ' </select>
                 <label style="color:#838383;">From</label>
                 <select class="form-select" aria-label="Default select example" name="placefrom" require>
                 <option  value="' . $update['froms'] . '"  selected>' . $update['froms'] . '</option>';
-            ?>
-            <?php
-            foreach ($detailsplace as $loop) {
-                echo '
+                ?>
+                <?php
+                foreach ($detailsplace as $loop) {
+                    echo '
                     <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
-            }
-            ?>
-            <?php echo '
+                }
+                ?>
+                <?php echo '
                 </select>
                 <label style="color:#838383;">To</label>
                 <select class="form-select" aria-label="Default select example" name="placeto" require>
                 <option  value="' . $update['tos'] . '"  selected> ' . $update['tos'] . ' </option>';
-            ?>
-            <?php
-            foreach ($detailsplace as $loop) {
-                echo '
+                ?>
+                <?php
+                foreach ($detailsplace as $loop) {
+                    echo '
                     <option value="' . $loop["placename"] . '">' . $loop["placename"] . '</option>';
-            }
-            ?>
-    <?php
-        echo ' 
+                }
+                ?>
+        <?php
+                echo ' 
         </select>
         <input type="file" name="imguplod"/> 
         <div class="inputdate pt-3">
@@ -274,31 +304,38 @@ $editdata = $detailsbus->dataedit();
         </form>
         </div>
         </div>';
-        };
-    }
-    ?>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
-    <script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
-
-    <script>
-        function showPopup() {
-            document.getElementById("popupBox").style.display = "flex";
+            };
         }
+        ?>
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+        <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+        <script src="https://kit.fontawesome.com/64fc7c3650.js" crossorigin="anonymous"></script>
 
-        function closePopup() {
-            document.getElementById("popupBox").style.display = "none";
-        }
+        <script>
+            function showPopup() {
+                document.getElementById("popupBox").style.display = "flex";
+            }
 
-        function closePopupo() {
-            document.querySelector(".popupboxd").style.display = "none";
-        }
-    </script>
+            function closePopup() {
+                document.getElementById("popupBox").style.display = "none";
+            }
+
+            function closePopupo() {
+                document.querySelector(".popupboxd").style.display = "none";
+            }
+        </script>
+        <script>
+            document.getElementById("content-wrapper").style.transition = "all 1s";
+            document.getElementById("content-wrapper").style.marginLeft = "17%";
+            document.getElementById("sidebarbox").style.marginLeft = "-1%";
+            document.getElementById("content-wrapper").style.width = "84%";
+            document.getElementById("content-wrapper").style.float = "right";
+        </script>
 </body>
 
 </html>

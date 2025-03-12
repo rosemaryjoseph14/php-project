@@ -2,7 +2,6 @@
 require("../lib/db.php");
 class Dashboard extends DBconn
 {
-
   public function __construct()
   {
     $this->dbConnect();

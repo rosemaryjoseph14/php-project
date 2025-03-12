@@ -1,18 +1,33 @@
 
-let isSidebarVisible = false;
+let isSidebarVisible = true;
+
 function menubarfn() {
-    const menuToggle = document.getElementById("menuToggle");
-    const continer = document.getElementById("content-wrapper");
-    if (isSidebarVisible) {
-        menuToggle.style.left = "-280px";
-        menuToggle.style.top = "54px";
-        continer.style.width = "100%";
-        continer.style.marginLeft = "0px";
-    } else {
-        menuToggle.style.left = "0";
-        menuToggle.style.top = "54px";
-        continer.style.width = "80%";
-        continer.style.marginLeft = "291px";
-    }
-    isSidebarVisible = !isSidebarVisible;
+  
+  var menuToggle = document.getElementById("sidebarbox");
+
+  const continer = document.getElementById("content-wrapper");
+
+
+
+  if (isSidebarVisible) {
+    menuToggle.style.transition="all 1s";
+    continer.style.marginLeft="0";
+   menuToggle.style.position="relative";
+   continer.style.position="relative";
+   menuToggle.style.marginLeft="-17%";
+   continer.style.float="right";
+   continer.style.width="100%";
+  } else {
+    menuToggle.style.position="relative";
+   continer.style.position="relative";
+   continer.style.marginLeft="17%";
+   menuToggle.style.marginLeft="-1%";
+    continer.style.transition="all 1s";
+    menuToggle.style.transition="all 1s";
+    continer.style.width="84%";
+    continer.style.float="right";
+    
+    
+  }
+  isSidebarVisible = !isSidebarVisible;
 }

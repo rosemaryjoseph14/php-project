@@ -13,7 +13,7 @@ if (isset($_SESSION['login'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../styles/login.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@ if (isset($_SESSION['login'])) {
                 <p style="text-align: center; font-weight:600; font-family:Segoe Print; font-size:larger; margin-top:25px;">BookMyBus</p>
                 <h4 style="font-weight:500; text-align:center; color:#193066; margin-bottom:40px; margin-top:35px;">LOGIN</h4>
                 <div>
-                    <!-- <div class="col">
+                <!-- <div class="col">
                     <label class="w-100 pb-2 text-dark-emphasis">Name :</label>
                     <input type="text" class="input " />
                 </div> -->

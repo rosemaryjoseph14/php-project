@@ -3,7 +3,7 @@
 require("query.php");
 
 if (!isset($_SESSION['login'])) {
-    header("Location: admin/login.php");
+    header("Location: ../login.php");
 }
 $busnamedetl = $detailsbus->busnames();
 $placenamedetl = $detailsbus->placename();
@@ -20,31 +20,45 @@ $graphdetl = $detailsbus->graphfuntion();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Document</title>
+    <title>Dashboard</title>
 
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-</head>
 
+    <style>
+        #wrapper {
+            display: block !important;
+
+        }
+    </style>
+</head>
 <body>
-    <div class="container-fluied">
-        <div class="row w-100">
-            <?php
-            require("../component/sidebar.php");
+<?php
+            include("../component/header.php");
+
             ?>
-            <div class="col">
-                <div id="wrapper">
-                    <div id="content-wrapper" class="d-flex flex-column">
+    <div class="container-fluid">
+        <div class="row w-100">
+         
+            <div id="sidebarbox">
+
+                <?php
+                require("../component/sidebar.php");
+                ?>
+            </div>
+            <div id="content-wrapper">
+                <div id="wrapper" class="col">
+                    <div id="" class="d-flex flex-column ml-0 ">
                         <div id="content">
                             <div class="container-fluid">
                                 <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-2">
                                     <h1 class="h3 mb-0 text-gray-900">BUS DETAILS</h1>
                                 </div>
-                                <div class="row">
-                                    <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="row d-flex justify-content-between">
+                                    <div class="col-xl-3 col-md-6 mb-4" style="width: 33%;">
                                         <div class="card border-left-primary shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -62,8 +76,7 @@ $graphdetl = $detailsbus->graphfuntion();
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="col-xl-3 col-md-6 mb-4" style="width: 33%;">
                                         <div class="card border-left-success shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -82,30 +95,7 @@ $graphdetl = $detailsbus->graphfuntion();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3 col-md-6 mb-4">
-                                        <div class="card border-left-info shadow h-100 py-2">
-                                            <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Reviews</div>
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col-auto pl-3">
-                                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">60%</div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div class="progress progress-sm mr-2">
-                                                                    <div class="progress-bar bg-info" role="progressbar"
-                                                                        style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                                        aria-valuemax="100"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="col-xl-3 col-md-6 mb-4" style="width: 33%;">
                                         <div class="card border-left-warning shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -125,12 +115,11 @@ $graphdetl = $detailsbus->graphfuntion();
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xl-8 col-lg-7">
+                                    <div class="col-xl-8 col-lg-7  w-100">
                                         <div class="card shadow mb-4">
                                             <div
                                                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                                 <h6 class="m-0 font-weight-bold text-primary">Chart Overview</h6>
-                                                <div class="dropdown no-arrow"></div>
                                             </div>
                                             <div class="card-body">
                                                 <div class="chart-area"></div>
@@ -142,34 +131,17 @@ $graphdetl = $detailsbus->graphfuntion();
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true"></span>
-                                </button>
-                            </div>
-                            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                <a class="btn btn-primary" href="login.html">Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-                <script src="js/sb-admin-2.min.js"></script>
-                <script src="vendor/chart.js/Chart.min.js"></script>
-                <script src="js/demo/chart-area-demo.js"></script>
-                <script src="js/demo/chart-pie-demo.js"></script>
+
             </div>
         </div>
     </div>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
     <script>
         var options = {
             series: [{
@@ -207,6 +179,14 @@ $graphdetl = $detailsbus->graphfuntion();
         var chart = new ApexCharts(document.querySelector(".chart-area"), options);
         chart.render();
     </script>
+    <script>
+        document.getElementById("content-wrapper").style.transition = "all 1s";
+        document.getElementById("content-wrapper").style.marginLeft = "17%";
+        document.getElementById("sidebarbox").style.marginLeft = "-1%";
+        document.getElementById("content-wrapper").style.width = "84%";
+        document.getElementById("content-wrapper").style.float = "right";
+    </script>
+    <script src="../js/script.js"></script>
 </body>
 
 </html>
